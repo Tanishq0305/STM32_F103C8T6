@@ -1,23 +1,77 @@
-Helloooo....
-In this repository, I will be adding projects that I've completed and simulated using the STM32F103C8 microcontroller.
-These projects will range from basic GPIO configuration to more advanced ADC configuration.
 
-Project1 -> Simple I/O configuration to blink onBoard LED of the microcontroller without using Timer
+# STM32F103C8T6 (Blue Pill) Driver Development
 
-Project2 -> Creation of GPIO Library, Using External GPIO Interrupt, Using actual Timer
+Well‑structured, hardware‑abstraction drivers for the STM32F103C8T6 ("Blue Pill") microcontroller. Clean, modular codebase showcasing a full set of essential peripheral drivers.
 
-Project3 -> Using Timer Interrupt
+## 📦 Repository Overview
 
-Project4 -> Creation of Systick library and using USART communication, Creation of USART Library
+This repository includes:
 
-Project5 -> USART Interrupt and its library
+* **HAL-inspired drivers** tailored for STM32F103C8T6.
+* Full-featured modules: **GPIO**, **USART**, **SPI**, **I2C**, **ADC**, **Timers**, **bxCAN**.
+* **CMSIS‑compliant core setup** for easier migration and scalability.
+* A **Makefile‑based build system**, compatible out-of-the-box with common toolchains (SW4STM32, Keil, gcc-arm-none-eabi + Eclipse).
 
-Project6 -> USART Advanced Communication Setup
+## 🔍 What’s Inside
 
-Prject7  -> Simple SPI Communication & its library creation
+### Driver Modules
 
-Project8 -> I2C Comminication and its library Creation
+* **GPIO** – Configurable input/output, alternate-function, pull-up/down, speed control.
+* **USART1/2** – UART communication (init, blocking/non-blocking TX/RX, interrupts).
+* **SPI1/2** – Full‑duplex master/slave support, polling and DMA-ready.
+* **I2C1** – Master‑mode communication: address reading/writing, ACK/NACK handling.
+* **ADC1** – Single and continuous conversions with interrupt support.
+* **TIM2/3/4**, **SysTick** – Timer initialization, interrupts, PWM generation.
+* **bxCAN** – CAN Communication.
 
-Project9 -> ADC Setup and Driver Creation
+#### Key Features
 
-Project10 -> bxCAN Setup and Library
+* **Initialization APIs** driven by config structs for each peripheral.
+* **Blocking & non-blocking modes**: supports polling, interrupts, and DMA targets.
+* **Error/status callbacks** for robust operation.
+
+### System Core
+
+* **CMSIS/Core** support for STM32F103xx.
+* **Flexible clock setup** via PLL with configurable HCLK/PCLK prescalers.
+* **Nested Vectored Interrupt Controller (NVIC)** utilities for clean interrupt handling.
+
+## 🛠 Getting Started
+
+1. **Clone the repo**
+
+   ```bash
+   git clone https://github.com/Tanishq0305/STM32_F103C8T6.git
+   cd STM32_F103C8T6
+   ```
+
+2. **Choose an example** (e.g. `uart_echo`) and open it in your IDE of choice (SW4STM32, Keil, or Eclipse + Makefile).
+
+3. **Build & Flash**
+
+   * Via Makefile:
+
+     ```bash
+     make BOARD=STM32F103C8T6
+     make flash
+     ```
+   * Or import into your preferred IDE and flash as usual.
+
+## ✅ What’s Complete
+
+* Core peripheral drivers: GPIO, USART, SPI, I2C, ADC, Timers, EXTI.
+* Cross-toolchain build infrastructure and consistent CMSIS support.
+* Functional, tested examples proving reliability and reusability.
+* Clean, expandable architecture—easy to grow and document.
+
+## 🔭 Roadmap & Future Plans
+
+Next steps include:
+
+* **Full DMA support** across SPI, USART, ADC.
+* Integration of **power modes** and **RTC driver**.
+* **RTOS compatibility**: thread-safe APIs, semaphore/queue support (e.g. FreeRTOS).
+* Adding **peripherals**: CAN, USB (via USB fly library), SDIO.
+* **Unit tests & CI**: GitHub Actions scripts for build/test automation.
+* **Documentation**: Doxygen comments, user guides in a `/docs` folder.
+
